@@ -6,6 +6,7 @@ import lk.ijse.gdse68.springintro.deep.Wow;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -18,6 +19,7 @@ public class Sandun {
     //   public Sandun(){
 //       System.out.println(goodGirl);
 //   }
+
     //--------Constructure Injection---------
 //    @Autowired
 //    @Wow
@@ -33,8 +35,13 @@ public class Sandun {
     }
     @PostConstruct
     public void init(){
-        //System.out.println(goodGirl);
+//        System.out.println(goodGirl);
         goodGirl.love();
+    }
+
+    @Autowired
+    public void myMethod(@Nullable String name) {
+        System.out.println(name);
     }
 
 }
