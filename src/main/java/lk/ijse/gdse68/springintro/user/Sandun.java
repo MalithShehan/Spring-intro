@@ -13,14 +13,22 @@ public class Sandun {
 
     @Qualifier("Long hair")
 
-    private final GoodGirl goodGirl;
+    private GoodGirl goodGirl;
 
     //   public Sandun(){
 //       System.out.println(goodGirl);
 //   }
+    //--------Constructure Injection---------
+//    @Autowired
+//    @Wow
+//    public Sandun(GoodGirl goodGirl) {
+//        this.goodGirl = goodGirl;
+//    }
+
+    //---------Setter Injection-------------
     @Autowired
     @Wow
-    public Sandun(GoodGirl goodGirl) {
+    public void setGoodGirl(GoodGirl goodGirl) {
         this.goodGirl = goodGirl;
     }
     @PostConstruct
