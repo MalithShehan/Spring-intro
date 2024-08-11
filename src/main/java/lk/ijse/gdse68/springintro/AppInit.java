@@ -1,5 +1,6 @@
 package lk.ijse.gdse68.springintro;
 
+import lk.ijse.gdse68.springintro.aop.Transaction;
 import lk.ijse.gdse68.springintro.beans.TestBean;
 import lk.ijse.gdse68.springintro.config.Config;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
@@ -11,11 +12,13 @@ public class AppInit {
         var ctx = new AnnotationConfigApplicationContext();
         ctx.register(Config.class);
         ctx.refresh();
-        TestBean test = (TestBean)ctx.getBean("test");
-        ConfigurableBeanFactory beanFactory = ctx.getBeanFactory();
-        boolean isSingletonTest = beanFactory.isSingleton("test");
-        System.out.println(test);
-        System.out.println("Is test singleton: "+isSingletonTest);
+        Transaction transaction = (Transaction)ctx.getBean("transaction");
+        transaction.stratTransaction();
+        transaction.endTransaction();
+//        ConfigurableBeanFactory beanFactory = ctx.getBeanFactory();
+//        boolean isSingletonTest = beanFactory.isSingleton("test");
+//        System.out.println(test);
+//        System.out.println("Is test singleton: "+isSingletonTest);
         ctx.registerShutdownHook();
     }
 }
